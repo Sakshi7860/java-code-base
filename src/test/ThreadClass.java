@@ -1,5 +1,7 @@
 package test;
 
+import java.util.Arrays;
+
 public class ThreadClass extends Thread{
     public void run()
     {
@@ -9,6 +11,7 @@ public class ThreadClass extends Thread{
     {
         ThreadClass threadClass=new ThreadClass();
         threadClass.start();
-        threadClass.start();
+        //threadClass.start();  //illegalThreadStateException
+
     }
 }
