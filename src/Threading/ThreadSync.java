@@ -1,14 +1,20 @@
 package Threading;
 
+import com.sun.corba.se.impl.orbutil.concurrent.Sync;
+import kotlin.jvm.Synchronized;
+
 class Table
 {
-    public synchronized void printTable(int n)
+    public void printTable(int n)
     {
-        for(int i=1;i<=10;i++)
+        synchronized(Table.class)
         {
-            System.out.println("table of n:"+" "+n+" "+n*i);
+            for (int i = 1; i <= 10; i++) {
+                System.out.println("table of n:" + " " + n + " " + n * i);
+            }
         }
     }
+
     public void print(String name) throws InterruptedException {
         Thread.sleep(5000);
         System.out.println("print name: "+name);
@@ -51,9 +57,10 @@ class Thread2 extends Thread
 }
 public class ThreadSync {
     public static void main(String s[]) {
-        Table table = new Table();
-        Thread1 th1 = new Thread1(table);
-        Thread2 th2 = new Thread2(table);
+        Table table1 = new Table();
+        //Table table2 = new Table();
+        Thread1 th1 = new Thread1(table1);
+        Thread2 th2 = new Thread2(table1);
         th1.start();
         th2.start();
     }

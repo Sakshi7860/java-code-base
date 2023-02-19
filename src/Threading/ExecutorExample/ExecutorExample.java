@@ -5,6 +5,11 @@ import java.util.concurrent.*;
 class RunnableImplement implements Runnable{
 
     public void run(){
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("Hello");
     }
 
@@ -28,8 +33,8 @@ class ExecutorsExample {
         executorService.shutdown();
         //Its not allowed to submit more tasks to executive service after shutdown call.
         //shutdown() indicates that whatever tasks were submitted, just complete that one.
-        executorService.submit(runnable3);
-        executorService.awaitTermination(1000, TimeUnit.SECONDS);
+       // executorService.submit(runnable3);
+        executorService.awaitTermination(1, TimeUnit.SECONDS);
 
 
     }

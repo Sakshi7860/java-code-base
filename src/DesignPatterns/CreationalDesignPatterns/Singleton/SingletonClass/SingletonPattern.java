@@ -10,7 +10,7 @@ public class SingletonPattern {
     public static SingletonPattern getInstance()
     {
         if(singletonPattern==null) {
-            synchronized (SingletonPattern.class) {
+            synchronized (Object.class) {
                 if (singletonPattern == null)
                     singletonPattern = new SingletonPattern();
             }
