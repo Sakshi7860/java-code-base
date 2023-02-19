@@ -9,6 +9,7 @@ public class ThreadClass extends Thread{
     }
     public static void main(String s[])
     {
+        System.out.println("main class");
         ThreadClass threadClass=new ThreadClass();
         threadClass.start();
         //threadClass.start();  //illegalThreadStateException
